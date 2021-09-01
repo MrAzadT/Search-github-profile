@@ -4,13 +4,10 @@ myBtn.addEventListener("click", () => {
   const userInput = document.getElementById("userInput").value;
   console.log(userInput);
   const userName = userInput.split(" ").join("");
-  alert(userName);
 
   fetch("https://api.github.com/users/" + userName)
     .then((response) => response.json())
     .then((data) => display(data));
 });
 
-const display = (user) => {
-  console.log(user);
-};
+const display = (user) => {};
