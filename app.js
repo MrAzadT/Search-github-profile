@@ -1,6 +1,6 @@
 const myBtn = document.getElementById("myBtn");
 
-myBtn.addEventListener("click", (e) => {
+myBtn.addEventListener("click", () => {
   const userInput = document.getElementById("userInput").value;
   console.log(userInput);
   const userName = userInput.split(" ").join("");
@@ -8,5 +8,9 @@ myBtn.addEventListener("click", (e) => {
 
   fetch("https://api.github.com/users/" + userName)
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => display(data));
 });
+
+const display = (user) => {
+  console.log(user);
+};
