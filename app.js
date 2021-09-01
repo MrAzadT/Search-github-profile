@@ -1,17 +1,17 @@
 const myBtn = document.getElementById("myBtn");
 
 myBtn.addEventListener("click", () => {
-  const userInput = document.getElementById("userInput").value;
+  const userInput = document.getElementById("userInput");
+  const userInput2 = userInput.value;
+  const userName = userInput2.split(" ").join("");
 
-  const userName = userInput.split(" ").join("");
-
+  userInput.value = "";
   fetch("https://api.github.com/users/" + userName)
     .then((response) => response.json())
     .then((data) => display(data));
 });
 
 const display = (user) => {
-  console.log(user);
   const ShowProfile = document.getElementById("ShowProfile");
   ShowProfile.innerHTML = `
   <img style="width: 200px" src="${user.avatar_url}" alt="" />
@@ -21,6 +21,6 @@ const display = (user) => {
     <h3>Twitter Username : ${user.twitter_username}</h3>
     <h3>Followers : ${user.followers}</h3>
     <h3>Public Repos : ${user.public_repos}</h3>
-    <h3>URL : ${user.html_url}</h3>
+    <h3>URL :  <a target=_blank href="https://github.com/${user.login}"> ${user.html_url}</a></h3>
   `;
 };
